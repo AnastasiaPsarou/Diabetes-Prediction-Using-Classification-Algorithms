@@ -1,48 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-    h1 {text-align: center;}
-    p {text-align: center;}
-    div {text-align: center;}
-    h4 {color:#000080;}
-</style>
-  <meta charset="UTF-8">
-  
-  <!-- Make it compatible to mobile devices -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Diabetes Prediction</title>
-  
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Diabetes Prediction</title>
+	<style>
+		body {
+			background-color: #f5f5f5;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			margin: 0 auto;
+			padding: 30px;
+			max-width: 600px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		h1 {
+			text-align: center;
+			color: #000080;
+			font-weight: bold;
+			margin-top: 0;
+		}
+
+		form {
+			margin-top: 30px;
+			text-align: center;
+		}
+
+		input[type="text"] {
+			padding: 10px;
+			font-size: 16px;
+			border: none;
+			border-radius: 5px;
+			background-color: #f5f5f5;
+			margin-bottom: 10px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		input[type="text"]:focus {
+			outline: none;
+			background-color: #fff;
+			box-shadow: 0 0 5px #000080;
+		}
+
+		button {
+			background-color: #000080;
+			color: #fff;
+			padding: 10px 20px;
+			font-size: 16px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-top: 20px;
+			transition: background-color 0.3s ease;
+		}
+
+		button:hover {
+			background-color: #fff;
+			color: #000080;
+		}
+
+		.result {
+			color: #000080;
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 30px;
+			text-align: center;
+		}
+	</style>
 </head>
 
-<body style="background: #89CFF0;">
- <div class="login">
-	<h1 style="color:#000080;">Diabetes Prediction</h1>
-
-     <!-- Action is where the data is sent. In our case, predict page.
-     If action is omitted, it assumed to be the current page -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Number of Pregnancies" placeholder="Number of Pregnancies" required="required" /><br>
-        <input type="text" name="Glucose" placeholder="Glucose" required="required" /><br>
-        <input type="text" name="Blood Pressure" placeholder="Blood Pressure" required="required" /><br>
-        <input type="text" name="Skin Thickness" placeholder="Skin Thickness" required="required" /><br>
-        <input type="text" name="Insulin" placeholder="Insulin" required="required" /><br>
-        <input type="text" name="BMI" placeholder="BMI" required="required" /><br>
-        <input type="text" name="Diabetes Pedigree Function" placeholder="Diabetes Pedigree Function" required="required" /><br>
-        <input type="text" name="Age" placeholder="Age" required="required" /><p>
+<body>
+	<div class="container">
+		<h1>Diabetes Prediction</h1>
     
+        <form action="{{ url_for('predict')}}" method="post">
+          <input type="text" name="Number_of_Pregnancies" placeholder="Number of Pregnancies" required="required" /><br>
+          <input type="text" name="Glucose" placeholder="Glucose" required="required" /><br>
+          <input type="text" name="Skin_Thickness" placeholder="Skin Thickness" required="required" /><br>
+          <input type="text" name="Insulin" placeholder="Insulin" required="required" /><br>
+          <input type="text" name="BMI" placeholder="BMI" required="required" /><br>
+          <input type="text" name="Diabetes_Pedigree_Function" placeholder="Diabetes Pedigree Function" required="required" /><br>
+          <input type="text" name="Age" placeholder="Age" required="required" /><br>
+    
+          <input type="submit" value="Predict" />
+        </form>
 
-
-        <button class="btn btn-primary btn-block btn-large">Predict</button></p>
-    </form>
-
-   <br>
-   <br>
-   <h4 id="result"> {{ result }} </h4>
-
- </div>
-
-
+    <br>
+    <br>
+    <h4>{{ result }}</h4>
+	</div>
 </body>
 </html>
